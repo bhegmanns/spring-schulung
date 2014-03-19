@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
+	xmlns:util="http://www.springframework.org/schema/util">
+
+	<bean id="configuredClass" class="de.ithegmanns.spring.basic.el.a.ConfiguredClass">
+		
+	</bean>
+	
+	<util:properties id="myprops" location="de/ithegmanns/spring/basic/el/a/myprops.properties" />
+
+	<bean id="configuration" class="de.ithegmanns.spring.basic.el.a.Configuration">
+		<property name="veranstalter" value="Underground Records" />
+		<property name="anzahlBodyguards" value="4" />
+	</bean>
+
+</beans>

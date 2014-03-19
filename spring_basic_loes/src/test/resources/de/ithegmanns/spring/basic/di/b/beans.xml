@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	<bean id="rechnungsBuilder" class="de.ithegmanns.spring.basic.di.b.RechnungsBuilder">
+		<property name="tarif" ref="simpleTarif"/>
+	</bean>
+	
+	<bean id="rechnungsBuilderKonstruktorInjizierung" class="de.ithegmanns.spring.basic.di.b.RechnungsBuilder">
+		<constructor-arg ref="simpleTarif"/>
+	</bean>
+	
+	<bean id="rechnungsBuilderCoInType" class="de.ithegmanns.spring.basic.di.b.RechnungsBuilder">
+		<constructor-arg index="0" type="java.lang.Date" value=""/>
+		<constructor-arg index="1" ref=""/>
+	</bean>
+	
+	<bean id="rechnungsBuilderCoInIndex" class="de.ithegmanns.spring.basic.di.b.RechnungsBuilder">
+		<constructor-arg type="java.lang.Date" value=""/>
+		<constructor-arg type="de.ithegmanns.springbasic.di.b.Tarif" ref="simpleTarif"/>
+	</bean>
+	
+	<bean id="simpleTarif" class="de.ithegmanns.spring.basic.di.b.SimpleTarif"/>
+	
+</beans>
