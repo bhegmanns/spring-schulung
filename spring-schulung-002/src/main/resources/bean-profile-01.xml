@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+        profile="kind">
+
+    <bean id="weiblich" class="de.hegmanns.spring.schulung.demo.configuration.Mensch"
+    	p:lieblingsgetraenk="Milch" p:bezeichnung="Maedchen"/>
+    	
+    <bean id="maennlich" class="de.hegmanns.spring.schulung.demo.configuration.Mensch"
+    	p:lieblingsgetraenk="Kakao" p:bezeichnung="Junge"/>
+</beans>
