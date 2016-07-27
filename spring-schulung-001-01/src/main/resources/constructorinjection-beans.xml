@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/context 
+          http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<bean id="provider" class="de.hegmanns.spring.schulung.demo.dependency.pull.MessageProviderImpl"/>
+
+    <bean id="renderer" class="de.hegmanns.spring.schulung.demo.dependency.injection.constructor.MessageRendererConstructorInjection">
+    	<constructor-arg index="0" ref="provider"/>
+    </bean>
+    
+    <bean id="renderer_1"
+    	class="de.hegmanns.spring.schulung.demo.dependency.injection.constructor.MessageRendererConstructorInjection"
+    	c:_0-ref="provider"/>
+    
+    
+    <bean id="provider_1"
+    	class="de.hegmanns.spring.schulung.demo.dependency.injection.constructor.MessageProviderConstructorInjection"
+    	c:_0="Hallo InjectionWelt"/>
+    
+    <bean id="renderer_2"
+    	class="de.hegmanns.spring.schulung.demo.dependency.injection.constructor.MessageRendererConstructorInjection">
+    	<constructor-arg index="0" ref="provider_1"/>
+    </bean>
+</beans>
