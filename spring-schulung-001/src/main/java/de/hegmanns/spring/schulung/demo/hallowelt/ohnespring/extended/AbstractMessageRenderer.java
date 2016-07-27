@@ -9,8 +9,13 @@ public abstract class AbstractMessageRenderer implements MessageRenderer {
 	@Override
 	public final void render() {
 		messageProvider.orElseThrow(() -> new RuntimeException("MessageProvider nicht initialisiert."));
-		messageProvider.map(MessageProvider::getMessage)
-			.ifPresent((s) -> renderMessage(s));
+//		messageProvider.map(MessageProvider::getMessage)
+//			.ifPresent((s) -> renderMessage(s));
+//		
+		if (messageProvider.isPresent()){
+			renderMessage(messageProvider.get().getMessage());
+		}
+		
 	}
 	
 	protected abstract void renderMessage(String message);

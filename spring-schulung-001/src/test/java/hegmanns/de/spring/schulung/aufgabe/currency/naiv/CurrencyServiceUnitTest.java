@@ -3,23 +3,40 @@ package hegmanns.de.spring.schulung.aufgabe.currency.naiv;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
+
+import static org.mockito.Matchers.anyString;
+
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import static org.hamcrest.Matchers.comparesEqualTo;
 import static org.hamcrest.Matchers.is;
 
 import de.hegmanns.spring.schulung.aufgabe.currency.CurrencyService;
+import de.hegmanns.spring.schulung.aufgabe.currency.RateProvider;
 import de.hegmanns.spring.schulung.aufgabe.currency.naiv.NaiverCurrencyService;
+import de.hegmanns.spring.schulung.aufgabe.currency.spring.SpringConfiguredCurrencyService;
 
 public class CurrencyServiceUnitTest {
 
 	private CurrencyService currencyService;
+	
+	private RateProvider rateProvider;
+	
+	private static BigDecimal ANY_RATE = BigDecimal.TEN;
 
     @Before
     public void beforeAnyTest(){
-        currencyService = new NaiverCurrencyService();
+        currencyService = new SpringConfiguredCurrencyService();//new NaiverCurrencyService();
+        rateProvider = Mockito.mock(RateProvider.class);
+        ((SpringConfiguredCurrencyService)currencyService).setRateProvider(rateProvider);
     }
 
     @Test
@@ -29,28 +46,26 @@ public class CurrencyServiceUnitTest {
     
     @Test
     public void equalCurrencyDontRemoteLookup(){
-    	
-    	//Set the http proxy to webcache.mydomain.com:8080
-//    	System.setProperty("http.proxyHost", "webcache.mydomain.com");
-//    	System.setProperty("http.proxyPort", "8080");
-//
-//    	// Next connection will be through proxy.
-//    	URL url = new URL("http://java.sun.com/");
-//    	InputStream in = url.openStream();
-//
-//    	// Now, let's 'unset' the proxy.
-//    	System.setProperty("http.proxyHost", null);
-
-    	// From now on http connections will be done directly.
+    	currencyService.getAmount(BigDecimal.TEN, "ANY", "ANY");
+    	verify(rateProvider, never()).getRate(anyString(), anyString());
     }
     
     @Test
     public void unequalCurrencyWithRemoteLookup(){
+    	when(rateProvider.getRate(anyString(), anyString())).thenReturn(Optional.of(BigDecimal.TEN));
+    	currencyService.getAmount(BigDecimal.TEN, "ANY", "OTH");
     	
+    	verify(rateProvider, times(1)).getRate(anyString(), anyString());
+    }
+    
+    private boolean machWas(String s){
+    	// ...
+    	return "hallo".equals(s);
     }
 
     @Test
     public void unknownCurrency(){
+    	when(rateProvider.getRate(anyString(), anyString())).thenReturn(Optional.empty());
     	assertThat(currencyService.getAmount(BigDecimal.ONE, "EUR", "EEE").isPresent(), is(false));
     }
 
@@ -60,7 +75,8 @@ public class CurrencyServiceUnitTest {
      */
     @Test
     public void validRate(){
-    	assertThat(currencyService.getAmount(BigDecimal.ONE, "EUR", "USD").get(), comparesEqualTo(new BigDecimal("1.1174")));
+    	when(rateProvider.getRate(anyString(), anyString())).thenReturn(Optional.of(ANY_RATE));
+    	assertThat(currencyService.getAmount(BigDecimal.ONE, "EUR", "USD").get(), comparesEqualTo(ANY_RATE));
     }
     
     /**
@@ -70,7 +86,9 @@ public class CurrencyServiceUnitTest {
      */
     @Test
     public void calculateWithRate(){
-    	assertThat(currencyService.getAmount(new BigDecimal(5), "EUR", "USD").get(), comparesEqualTo(new BigDecimal("5.587")));
+    	when(rateProvider.getRate(anyString(), anyString())).thenReturn(Optional.of(ANY_RATE));
+    	BigDecimal myAmount = new BigDecimal(5);
+    	assertThat(currencyService.getAmount(myAmount, "EUR", "USD").get(), comparesEqualTo(ANY_RATE.multiply(myAmount)));
     }
     
 }

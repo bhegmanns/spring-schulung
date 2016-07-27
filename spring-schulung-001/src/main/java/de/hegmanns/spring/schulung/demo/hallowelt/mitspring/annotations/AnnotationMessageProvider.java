@@ -5,6 +5,7 @@ import de.hegmanns.spring.schulung.demo.hallowelt.ohnespring.extended.MessagePro
 
 public class AnnotationMessageProvider implements MessageProvider{
 
+	
 	public String getMessage(){
 		return "Hallo Welt";
 	}

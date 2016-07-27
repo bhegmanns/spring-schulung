@@ -10,4 +10,8 @@
     <bean id="renderer" class="de.hegmanns.spring.schulung.demo.hallowelt.ohnespring.extended.DefaultMessageRenderer"
         p:messageProvider-ref="provider"/>
         
+    <bean id="xmlRenderer" class="de.hegmanns.spring.schulung.demo.hallowelt.ohnespring.extended.XmlMessageRenderer" p:messageProvider-ref="provider"/>
+    
+    <bean id="halloweltuser" class="de.hegmanns.spring.schulung.demo.hallowelt.mitspring.HalloWeltUser"/>
+        
 </beans>

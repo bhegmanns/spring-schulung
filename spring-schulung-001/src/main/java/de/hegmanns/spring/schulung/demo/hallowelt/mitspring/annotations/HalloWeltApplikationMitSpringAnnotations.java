@@ -1,5 +1,7 @@
 package de.hegmanns.spring.schulung.demo.hallowelt.mitspring.annotations;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.util.Arrays;
 
 import org.springframework.context.ApplicationContext;
@@ -15,7 +17,7 @@ import de.hegmanns.spring.schulung.demo.hallowelt.ohnespring.extended.MessageRen
 @ComponentScan
 public class HalloWeltApplikationMitSpringAnnotations {
 	
-	@Bean
+	@Bean//(name = "myProvider")
 	MessageProvider provider(){
 		return new AnnotationMessageProvider();
 	}
@@ -27,6 +29,9 @@ public class HalloWeltApplikationMitSpringAnnotations {
 		renderer.render();
 		
 		System.out.println("Bean-Names im Context:");
-		Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+//		Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+		for (String beanName : context.getBeanDefinitionNames()){
+			System.out.println("" + beanName);
+		}
 	}
 }
