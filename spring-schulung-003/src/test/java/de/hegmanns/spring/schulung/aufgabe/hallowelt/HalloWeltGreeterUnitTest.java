@@ -9,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import de.hegmanns.spring.schulung.aufgabe.hallowelt.advice.norun.NoGreetException;
-import de.hegmanns.spring.schulung.aufgabe.hallowelt.advice.security.LoginProvider;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:/greeter.xml")

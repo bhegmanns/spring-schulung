@@ -12,10 +12,8 @@
    
 
     <aop:aspectj-autoproxy />
- 
-<context:component-scan base-package="de.hegmanns.spring.schulung.aufgabe.hallowelt.aspectj" />
-<!--  
-<bean id="greeter" class="de.hegmanns.spring.schulung.aufgabe.hallowelt.aspectj.HelloService" />
- -->
+    
+    <context:component-scan base-package="de.hegmanns.spring.schulung.aufgabe.hallowelt.aspectj" />
+
     
 </beans>

@@ -1,6 +1,4 @@
-package de.hegmanns.spring.schulung.aufgabe.hallowelt.advice.security;
-
-import de.hegmanns.spring.schulung.aufgabe.hallowelt.CallContext;
+package de.hegmanns.spring.schulung.aufgabe.hallowelt;
 
 public class LoginProvider {
 

@@ -2,8 +2,6 @@ package de.hegmanns.spring.schulung.aufgabe.hallowelt;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import de.hegmanns.spring.schulung.aufgabe.hallowelt.advice.security.LoginProvider;
-
 public class GreetingApp {
 
 	private static GenericXmlApplicationContext ctx = null;
@@ -15,8 +13,8 @@ public class GreetingApp {
 
         greeter = ctx.getBean("greeter", HalloWeltGreeter.class);
 //        notLoggedIn();
-        loggedIn();
-//        tryingBill();
+//        loggedIn();
+        tryingBill();
 	}
 	
 	private static void notLoggedIn(){

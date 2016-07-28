@@ -18,7 +18,13 @@ public class MyAspect {
 		System.out.println(">>> " + joinpoint.getSignature().getName());
 	}
 	
+	@Before("selectAll()")
+	public void everyHello01(JoinPoint joinpoint){
+		System.out.println(">>> " + joinpoint.getSignature().getName());
+	}
+	
 	@After("execution(* HelloService.*(..))")
+//	@After("@annotation(@MySpecialAnnotation)")
 	public void sayHello(JoinPoint joinpoint){
 		System.out.println(">>> " + joinpoint.getArgs());
 	}

@@ -27,6 +27,7 @@
         <property name="interceptorNames">
             <list>
                 <value>advice</value>
+                <value>advisor</value>
             </list>
         </property>
     </bean>

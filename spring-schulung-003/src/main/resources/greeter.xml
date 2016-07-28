@@ -19,9 +19,10 @@
         </property>
         <property name="interceptorNames">
             <list>
-                <value>timeinterceptor</value>
+            <value>timeinterceptor</value>
                 <value>securityinterceptor</value>
                 <value>noruninterceptor</value>
+                
             </list>
         </property>
     </bean>

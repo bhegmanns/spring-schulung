@@ -11,10 +11,22 @@ public class TimeAdvice implements MethodInterceptor {
 	public Object invoke(MethodInvocation methodinvocation) throws Throwable {
 		System.out.println("" + methodinvocation.getMethod().getName());
 		long nanoTimeStart = System.nanoTime();
-		Object result = methodinvocation.proceed();
-		long nanoTimeEnd   = System.nanoTime();
-		System.out.println("" + methodinvocation.getMethod().getName() + " in " + (nanoTimeEnd-nanoTimeStart) + "ns");
+		Object result = null;
+		try{
+		result = methodinvocation.proceed();
+		}
+		catch(Throwable e){
+			e.printStackTrace(System.out);
+			throw e;
+		}
+		finally {
+			long nanoTimeEnd   = System.nanoTime();
+			System.out.println("" + methodinvocation.getMethod().getName() + " in " + (nanoTimeEnd-nanoTimeStart) + "ns");
+//			return result;
+		}
+		
 		return result;
+		
 	}
 
 	
