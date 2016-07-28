@@ -5,6 +5,7 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
+import org.junit.internal.runners.TestMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,5 +21,7 @@ public class MessageListenerImpl implements MessageListener {
         } catch (JMSException ex) {
             logger.error("JMS error", ex);
         }
+//        throw new RuntimeException("I hate messages");
     }
+    
 }
