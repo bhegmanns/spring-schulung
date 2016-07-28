@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   
+
+    <bean id="mytarget"
+    	class="de.hegmanns.spring.schulung.aufgabe.hallowelt.HalloWeltGreeter"/>
+    <bean id="timeinterceptor" class="de.hegmanns.spring.schulung.aufgabe.hallowelt.advice.time.TimeAdvice"/>
+    <bean id="securityinterceptor" class="de.hegmanns.spring.schulung.aufgabe.hallowelt.advice.security.SecurityInterceptor"/>	
+    <bean id="noruninterceptor" class="de.hegmanns.spring.schulung.aufgabe.hallowelt.advice.norun.NoMethodRunAdvice"/>		
+
+    <bean id="greeter" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <ref bean="mytarget"/>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>timeinterceptor</value>
+                <value>securityinterceptor</value>
+                <value>noruninterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+    
+</beans>

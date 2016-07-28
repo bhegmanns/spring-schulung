@@ -38,7 +38,7 @@ public class KundeRepositoryJdbcImpl implements KundeRepository {
              // Creates a PreparedStatement object for sending parameterized SQL
              // statements to the database
              PreparedStatement ps = conn
-                          .prepareStatement("select * from kunde where id = ?");
+                          .prepareStatement("select * from kkunde where id = ?");
              // Sets the designated parameter to the given Java int value
              ps.setLong(1, id);
              // Executes the SQL query in this PreparedStatement object and
@@ -74,7 +74,7 @@ public class KundeRepositoryJdbcImpl implements KundeRepository {
               // open a connection using DB url
               conn = getConnection();
               Statement stmt = conn.createStatement();
-              stmt.executeUpdate("insert into kunde values ("
+              stmt.executeUpdate("insert into kkunde values ("
                           + kunde.getId() + ",'" + kunde.getVorname() + "','" + kunde.getNachname() + "')");
               stmt.close();
         } catch (SQLException e) {
@@ -108,7 +108,7 @@ public class KundeRepositoryJdbcImpl implements KundeRepository {
 	                // open a connection using DB url
 	                conn = getConnection();
 	                Statement stmt = conn.createStatement();
-	                stmt.executeUpdate("create table kunde (id integer, vorname char(30), nachname char(30))");
+	                stmt.executeUpdate("create table kkunde (id integer, vorname char(30), nachname char(30))");
 	                stmt.close();
 	          } catch (SQLException e) {
 	               throw new RuntimeException(e);

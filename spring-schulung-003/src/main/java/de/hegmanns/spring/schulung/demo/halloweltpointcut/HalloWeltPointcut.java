@@ -14,7 +14,13 @@ public class HalloWeltPointcut extends StaticMethodMatcherPointcut {
 
 	@Override
 	public ClassFilter getClassFilter() {
-		return (c) -> c == HalloWeltBean.class;
+		
+		return new ClassFilter() {
+			@Override
+			public boolean matches(Class<?> c) {
+				return c == HalloWeltBean.class;
+			}
+		};
 	}
 
 }

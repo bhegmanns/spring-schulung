@@ -19,7 +19,7 @@ import de.hegmanns.spring.schulung.data.demo.core.Kunde;
 import de.hegmanns.spring.schulung.data.demo.core.KundeRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/jdbctemplate_spring.xml")
+@ContextConfiguration("/app-context.xml")
 @FixMethodOrder
 public class KundeRepositoryJdbcTemplateIntegrationTest {
 

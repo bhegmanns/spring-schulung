@@ -33,7 +33,7 @@ public class RealTimeRateProvider implements RateProvider {
 		ClientConfig clientConfig = new ClientConfig();
         Client client = ClientBuilder.newClient(clientConfig);
 
-        String urlString = "http://api.fixer.io/latest?base=" + sourceCurrency + ";symbols=" + targetCurrency;
+        String urlString = buildUrl(sourceCurrency, targetCurrency);
         LOG.debug("URL=" + urlString);
         //System.out.println("URL = <" + urlString + ">");
         WebTarget service = client.target(urlString);
@@ -58,5 +58,8 @@ public class RealTimeRateProvider implements RateProvider {
         BigDecimal bigDecimal = new BigDecimal(rate.toString());
         return Optional.of(bigDecimal);
 	}
-
-}
+	
+	private String buildUrl(String sourceCurrency, String targetCurrency){
+		return "http://api.fixer.io/latest?base=" + sourceCurrency + ";symbols=" + targetCurrency;
+		}
+	}

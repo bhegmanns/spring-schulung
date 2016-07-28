@@ -29,7 +29,6 @@ public class KundeRepositorySpringIntegrationTest {
 	
 	@Test
 	public void foo(){
-		kunderepository.createDatabase();
 		
 		Kunde kunde = new Kunde();
 		kunde.setId(2);

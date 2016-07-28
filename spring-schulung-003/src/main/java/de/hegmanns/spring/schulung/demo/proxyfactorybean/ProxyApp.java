@@ -12,10 +12,10 @@ public class ProxyApp {
         Bean bean1 = ctx.getBean("bean1", Bean.class);
         Bean bean2 = ctx.getBean("bean2", Bean.class);
 
-        System.out.println("Bean 1");
-        bean1.doAll();
-        bean1.doEnglish();
-        bean1.doGerman();
+//        System.out.println("Bean 1");
+//        bean1.doAll();
+//        bean1.doEnglish();
+//        bean1.doGerman();
 
         System.out.println("\nBean 2");
         bean2.doAll();

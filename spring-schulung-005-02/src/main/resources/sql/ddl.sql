@@ -1,0 +1,1 @@
+create table kunde (id integer, vorname char(30), nachname char(30));

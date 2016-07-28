@@ -15,7 +15,7 @@
 		<version.mockito>1.9.5</version.mockito>
 		<version.slf4j>1.7.14</version.slf4j>
 		<version.spring>4.0.6.RELEASE</version.spring>
-		<aspectj.version>1.7.2</aspectj.version>
+		<aspectj.version>1.6.11</aspectj.version><!-- 1.7.2 -->
 	</properties>
 
 	<build>

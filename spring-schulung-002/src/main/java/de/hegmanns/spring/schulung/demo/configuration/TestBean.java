@@ -1,7 +1,10 @@
 package de.hegmanns.spring.schulung.demo.configuration;
 
+import javax.inject.Inject;
+
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.GenericApplicationContext;
@@ -10,7 +13,11 @@ public class TestBean implements BeanNameAware, ApplicationContextAware{
 
 	private String einWert;
 	private String beanName;
+	
 	private ApplicationContext applicationContext;
+	
+	@Autowired
+	private Mensch mensch;
 	
 	public TestBean(){}
 
@@ -27,7 +34,7 @@ public class TestBean implements BeanNameAware, ApplicationContextAware{
 		this.beanName = beanName;
 	}
 	
-	public String getValueFromContext(){
+	private String getValueFromContext(){
 		if (applicationContext != null){
 			String stringValue = applicationContext.getBean("stringValue", String.class);
 			return stringValue;
@@ -53,5 +60,8 @@ public class TestBean implements BeanNameAware, ApplicationContextAware{
 		}
 	}
 	
+	public int doWhat(String value){
+		return (getValueFromContext() + value).length();
+	}
 	
 }
