@@ -15,7 +15,7 @@
 
 	<context:annotation-config />
 
-	<context:component-scan base-package="de.hegmanns.spring.schulung.data.demo.core.jdbc.spring" />
+	<context:component-scan base-package="de.hegmanns.spring.schulung.aufgabe" />
 	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
