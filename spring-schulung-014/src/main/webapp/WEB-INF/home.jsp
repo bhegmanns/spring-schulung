@@ -20,11 +20,11 @@
   </p>
 
   <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
-  <script src="/stockticker/resources/stomp.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script>
     //Create stomp client over sockJS protocol
-    var socket = new SockJS("/stockticker/ws");
+    var socket = new SockJS("/spring-schulung-014/ws");
     var stompClient = Stomp.over(socket);
 
     // Render price data from server into HTML, registered as callback
