@@ -1,0 +1,11 @@
+TransactionTemplate newTransactionTemplate = new TransactionTemplate(transactionTemplate.getTransactionManager());
+		newTransactionTemplate.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		List<CountryGroup> resultList = newTransactionTemplate.execute(new TransactionCallback<List<CountryGroup>>() {
+
+			@Override
+			public List<CountryGroup> doInTransaction(TransactionStatus arg0) {
+				return entityManager.createQuery("select c from CountryGroup c where c.name = :name").setParameter("name", "Austria").getResultList();
+			}
+		});
+		assertThat(resultList, hasSize(1));
+		assertThat(resultList.get(0).getName(), is("Austria"));
