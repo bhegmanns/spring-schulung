@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -16,26 +18,31 @@ public class ContactDaoImpl implements ContactDao {
     private SessionFactory sessionFactory;
 
     @Transactional(readOnly=true)
-    public List<Contact> findAll() {
+    public List<Contact> getAll() {
         return sessionFactory.getCurrentSession().createQuery("from Contact c").list();
     }
 
     @Transactional(readOnly=true)
-    public List<Contact> findAllWithDetail() {
+    public List<Contact> getAllWithDetail() {
         return sessionFactory.getCurrentSession().
             getNamedQuery("Contact.findAllWithDetail").list();
     }
 
     @Transactional(readOnly=true)
-    public Contact findById(Long id) {
+    public Contact getById(Long id) {
         return (Contact) sessionFactory.getCurrentSession().
             getNamedQuery("Contact.findById").
             setParameter("id", id).uniqueResult();
     }
 
-    public Contact save(Contact contact) {
+    public Contact add(Contact contact) {
         sessionFactory.getCurrentSession().saveOrUpdate(contact);
+        
+        
         LOG.info("Contact saved with id: " + contact.getId());
+//        if (true){
+//        	throw new RuntimeException("");
+//        }
         return contact;
     }
 

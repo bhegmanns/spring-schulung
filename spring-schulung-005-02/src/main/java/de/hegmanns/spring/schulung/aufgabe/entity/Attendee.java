@@ -1,10 +1,12 @@
 package de.hegmanns.spring.schulung.aufgabe.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Attendee {
@@ -15,7 +17,7 @@ public class Attendee {
 	private String firstName;
 	private String lastName;
 	
-	@ManyToOne
+	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
 	@JoinColumn(name = "country_name")
 	private CountryGroup countryGroup;
 
@@ -49,6 +51,14 @@ public class Attendee {
 
 	public void setCountryGroup(CountryGroup countryGroup) {
 		this.countryGroup = countryGroup;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

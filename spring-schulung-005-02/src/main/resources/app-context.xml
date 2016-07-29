@@ -23,9 +23,9 @@
 		<property name="url" value="${jdbc.url}" />
 	</bean>
 	
-	<jdbc:initialize-database data-source="dataSource">
+	<!-- <jdbc:initialize-database data-source="dataSource">
 		<jdbc:script location="sql/ddl.sql"/>
-	</jdbc:initialize-database>
+	</jdbc:initialize-database> -->
 	
 	<context:property-placeholder location="jdbc.properties" />
 
@@ -47,6 +47,8 @@
         <prop key="hibernate.jdbc.fetch_size">50</prop>
         <prop key="hibernate.jdbc.batch_size">10</prop>
         <prop key="hibernate.show_sql">true</prop>
+        <prop key="hibernate.format_sql">true</prop>
+        <prop key="hibernate.hbm2ddl.auto">create</prop>
     </util:properties>
 	
 </beans>
