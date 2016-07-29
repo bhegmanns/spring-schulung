@@ -18,7 +18,7 @@ public class Attendee {
 	private String lastName;
 	
 	@ManyToOne(optional = false, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "country_name")
+	@JoinColumn(name = "countrygroup_name")
 	private CountryGroup countryGroup;
 
 	public String getUsername() {

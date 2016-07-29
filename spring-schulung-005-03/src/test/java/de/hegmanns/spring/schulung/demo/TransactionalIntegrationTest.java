@@ -51,7 +51,7 @@ public class TransactionalIntegrationTest {
 	private TransactionTemplate transactionTemplate;
 	
 	@Test
-	@org.junit.Ignore("it's for transaction service")
+//	@org.junit.Ignore("it's for transaction service")
 	public void addingAttendee(){
 		CountryGroup groupInDatabase = countryGroupRepository.findByName("Austria");
 		assertThat(groupInDatabase, nullValue());
@@ -59,21 +59,45 @@ public class TransactionalIntegrationTest {
 		CountryGroup group = ConfigurationIntegrationTest.createCountryGroup("Austria", "austi", "austi");
 		attendee.setCountryGroup(group);
 		
+//		specialAttendeeRepository.add(attendee);
 		try {
 			specialAttendeeRepository.add(attendee);
+			entityManager.clear();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		groupInDatabase = countryGroupRepository.findByName("Austria");
+		Attendee attendeeInDatabase = attendeeRepository.findByUsernameAndPassword("ulli", "ulli");
+		assertThat(groupInDatabase, notNullValue());
+		assertThat(attendeeInDatabase, notNullValue());
+//		assertThat(groupInDatabase, notNullValue());
+	}
+	
+	@Test
+//	@org.junit.Ignore("it's for transaction service")
+	public void readingCountryGroup(){
+		CountryGroup groupInDatabase = countryGroupRepository.findByName("Austria");
 		assertThat(groupInDatabase, notNullValue());
 	}
 	
 	@Test
-	@org.junit.Ignore("it's for transaction service")
-	public void readingCountryGroup(){
-		CountryGroup groupInDatabase = countryGroupRepository.findByName("Austria");
-		assertThat(groupInDatabase, notNullValue());
+	public void foo(){
+//		TransactionTemplate newTemplate = new TransactionTemplate(transactionTemplate.getTransactionManager());
+//		newTemplate.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		
+		transactionTemplate.setPropagationBehavior(TransactionDefinition.PROPAGATION_SUPPORTS);
+		int count = transactionTemplate.execute(new TransactionCallback<Integer>() {
+
+			@Override
+			public Integer doInTransaction(TransactionStatus status) {
+				//...
+				if (true /* make service to check  quality*/){
+					status.setRollbackOnly();
+				}
+				return (int)entityManager.createQuery("select count(c) from CountryGroup c").getSingleResult();
+			}
+		});
 	}
 }

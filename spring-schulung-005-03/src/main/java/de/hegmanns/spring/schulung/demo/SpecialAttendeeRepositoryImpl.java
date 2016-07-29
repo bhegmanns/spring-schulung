@@ -5,6 +5,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
@@ -17,12 +18,13 @@ public class SpecialAttendeeRepositoryImpl implements SpecialAttendeeRepository 
 	@Autowired
 	private CountryRespository countryRepository;
 	
+//	@Transactional(noRollbackFor = {RuntimeException.class},)
 	@Override
 	public void add(Attendee attendee) {
 		countryRepository.add(attendee.getCountryGroup());
 		entityManager.persist(attendee);
-		
-		throw new RuntimeException("I won't persist");
+//		entityManager.getTransaction().commit();
+//		throw new RuntimeException("I won't persist");
 	}
 
 }

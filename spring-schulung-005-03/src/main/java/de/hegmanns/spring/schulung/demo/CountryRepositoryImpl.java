@@ -32,7 +32,7 @@ public class CountryRepositoryImpl implements CountryRespository{
 	}
 
 	@Override
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void add(CountryGroup countryGroup) {
 		entityManager.persist(countryGroup);
 	}

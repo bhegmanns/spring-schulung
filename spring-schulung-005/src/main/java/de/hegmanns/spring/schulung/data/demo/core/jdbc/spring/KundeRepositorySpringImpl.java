@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import de.hegmanns.spring.schulung.data.demo.core.Kunde;
@@ -17,6 +18,7 @@ import de.hegmanns.spring.schulung.data.demo.core.jdbc.KundeRepositoryJdbcImpl;
 public class KundeRepositorySpringImpl extends KundeRepositoryJdbcImpl implements KundeRepository {
 
 	@Autowired
+	@Qualifier("dataSource")
 //	@Inject
 	private DataSource datasource;
 
