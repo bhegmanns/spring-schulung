@@ -1,0 +1,16 @@
+Themen dieses Projekts:
+
+- Konfigurationsmöglichkeiten in Applikationen
+  * XML-Konfiguration
+  * Annotation, getriggert über XML-Konfiguration
+  * pure Annotation
+  
+- Scopes (Singleton und Prototype)
+
+01. Compilieren und Ausführung aller Tests
+man clean test
+
+Die Tests können auch direkt über die Konsole ausgeführt werden.
+Auch die jeweils enthaltenen Applikationen können direkt über Eclipse ausgeführt werden.
+
+

@@ -1,0 +1,37 @@
+Singleton, Prototype aus der Annotation-Definition
+==================================================
+
+Unterschied zu e01/e02:
+	Diese Konfiguration kommt gänzlich ohne XML-Datei aus.
+	
+Hinweis:
+	Ich habe die Bean-Namen in e02 und e03 leicht geändert, um
+	Verwechselungen zu vermeiden.
+	Davon abgesehen, dass es sich ja auch um andere Klassen handelt
+	(HalloWelt02/HalloWelt03), sind auch die Namen leicht anders.
+
+Siehe hierzu "de.hegmanns.spring.schulung.k002.e03.SpringScopeUnitTest"
+
+Folgende Beans werden verwendet:
+
+hallowelt_singleton_default
+	keine scope-Angabe in der Definition, damit implizit "singleton"
+
+hallowelt_singleton_explizit
+	mit scope-Angabe in der Definition
+
+hallowelt_prototype
+	mit scope-Angabe in der Definition
+	
+Auflauf in jeder Testmethode:
+	Im SpringScopeUnitTest werden für jede der Bean-Definitionen zunächst eine
+	Instanz geholt und an dieser Instanz setMessage(null) aufgerufen.
+	
+	Anschließend wird ein zweites Mal die Bean-Instanz aus der Factory geholt.
+	
+	Je nach Scope besitzt der Wert für das message-Attribute den Wert der Definition
+	oder null.
+	Zudem beweist der Instanzvergleich, dass Singleton-Scope wirklich die gleiche Instanz
+	zurück gibt.
+
+

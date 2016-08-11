@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+    <bean id="hallowelt_singleton_default"
+    	  class="de.hegmanns.spring.schulung.k002.e01.HalloWelt01">
+    	  <property name="message" value="HalloWelt von HalloWelt01.singleton.default"/>
+    </bean>
+    <bean id="hallowelt_singleton_explizit" scope="singleton"
+    	  class="de.hegmanns.spring.schulung.k002.e01.HalloWelt01">
+    	  <property name="message" value="HalloWelt von HalloWelt01.singleton.explizit"/>
+    </bean>
+    <bean id="hallowelt_prototype" scope="prototype"
+    	  class="de.hegmanns.spring.schulung.k002.e01.HalloWelt01">
+    	  <property name="message" value="HalloWelt von HalloWelt01.prototype"/>
+    </bean>
+
+</beans>
