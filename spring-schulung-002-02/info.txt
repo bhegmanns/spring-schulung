@@ -1,0 +1,19 @@
+Themen dieses Projekts:
+
+- Konfigurationsmöglichkeiten in WEB-Applikationen
+- Hook-Methoden durch Annotationen
+- Scopes (Singleton, Prototype, Session, Request, GlobalSession)
+
+
+Vorgehensweise:
+
+- Start und direktes Deployment im Tomcat
+  * hierzu:
+    am besten in einer eigenen Shell:
+    mvn clean install org.apache.tomcat.maven:tomcat7-maven-plugin:2.2:run
+    
+    Ein lokaler Tomcat wird nun gestartet und die Web-Anwendung wird deployed.
+    
+    Aufruf der Anwendung im WEB-Browser:
+    http://localhost:8080/spring-schulung-002-02
+    
