@@ -1,0 +1,5 @@
+AOP mit AspectJ
+
+mvn clean install
+mvn exec:java -Dexec.mainClass="de.hegmanns.spring.schulung.k003.e02.SecurityAnnotationaspectApplication"
+mvn exec:java -Dexec.mainClass="de.hegmanns.spring.schulung.k003.e01.AspectApplication"
