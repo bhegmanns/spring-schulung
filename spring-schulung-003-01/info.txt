@@ -1,4 +1,10 @@
 AOP mit AspectJ
+===============
+
+Hier gibt es zwei Beispiele, einmal ein einfaches Beispiel mit einem PointCut.
+
+Das zweite Beispiel nutzt eine eigene Annotation.
+
 
 mvn clean install
 mvn exec:java -Dexec.mainClass="de.hegmanns.spring.schulung.k003.e02.SecurityAnnotationaspectApplication"
