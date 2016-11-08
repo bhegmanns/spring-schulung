@@ -1,7 +1,7 @@
 stocks
 -----------
 
-A demo of Java EE 7 websocket.
+
 
 To run this project:
 

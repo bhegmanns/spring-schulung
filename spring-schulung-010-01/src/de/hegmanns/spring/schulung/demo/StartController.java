@@ -13,6 +13,6 @@ public class StartController {
  
 		String message = "<br><div style='text-align:center;'>"
 				+ "<h3>********** Hallo Welt</h3>Eine Nachricht vom StartController.java **********</div><br><br>";
-		return new ModelAndView("welcome", "message", message);
+		return new ModelAndView("welcome01", "message", message);
 	}
 }

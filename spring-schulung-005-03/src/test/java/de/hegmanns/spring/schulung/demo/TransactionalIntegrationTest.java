@@ -88,15 +88,15 @@ public class TransactionalIntegrationTest {
 //		newTemplate.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		
 		transactionTemplate.setPropagationBehavior(TransactionDefinition.PROPAGATION_SUPPORTS);
-		int count = transactionTemplate.execute(new TransactionCallback<Integer>() {
+		long count = transactionTemplate.execute(new TransactionCallback<Long>() {
 
 			@Override
-			public Integer doInTransaction(TransactionStatus status) {
+			public Long doInTransaction(TransactionStatus status) {
 				//...
 				if (true /* make service to check  quality*/){
 					status.setRollbackOnly();
 				}
-				return (int)entityManager.createQuery("select count(c) from CountryGroup c").getSingleResult();
+				return (long)entityManager.createQuery("select count(c) from CountryGroup c").getSingleResult();
 			}
 		});
 	}
